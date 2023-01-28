@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+typedef long long int ll;
+using namespace std;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);cout.tie(0);
+    ll t;
+    cin>>t;
+    while(t--){
+        ll n;
+        cin>>n;
+        ll i,j,k,x,m,p;
+        vector<pair<ll,ll>>a;
+        for(i=0;i<n;i++){
+            cin>>k;
+            m=-1;
+            p=0;
+            for(j=0;j<k;j++){
+                cin>>x;
+                m=max(m,x-j+1);
+            }
+            a.push_back({m,k});
+        }
+        sort(a.begin(),a.end());
+        ll s=a[0].second;
+        x=a[0].first;
+        for(i=1;i<n;i++){
+            x=max(x,a[i].first-s);
+            s+=a[i].second;
+        }
+        cout<<x<<endl;
+    }
+}
